@@ -36,3 +36,18 @@ let pokemonList = [
     ability: [ "Damp" , "Water-absorb" , "Swift-swim"]
   }
 ];
+
+for ( let i=0 ; pokemonList[i]; i++)
+{
+  //Writes Pokemon name to the DOM
+  document.write (pokemonList[i].name+ " (height:" + pokemonList[i].height + ")");
+
+  //Checks if the height is greater than 1.9
+  if (pokemonList[i].height > 1.9 )
+  {
+    //writes "- Wow that's big!",if pokemon height is greater than 1.9
+    document.write (" - Wow, that’s big!");
+  }
+  //Adds line breaks
+  document.write("<br>");
+}
