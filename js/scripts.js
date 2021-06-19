@@ -37,17 +37,8 @@ let pokemonList = [
   }
 ];
 
-for ( let i=0 ; pokemonList[i]; i++)
+pokemonList.forEach (function(pokemon)
 {
-  //Writes Pokemon name to the DOM
-  document.write (pokemonList[i].name+ " (height:" + pokemonList[i].height + ")");
-
-  //Checks if the height is greater than 1.9
-  if (pokemonList[i].height > 1.9 )
-  {
-    //writes "- Wow that's big!",if pokemon height is greater than 1.9
-    document.write (" - Wow, that’s big!");
-  }
-  //Adds line breaks
-  document.write("<br>");
-}
+  //prints the details of each Pokemon to the DOM and add line breaks
+ document.write ("<p> Name: " + pokemon.name + " - Height: " + pokemon.height + " - Type: " + pokemon.type + " - Ability: " + pokemon.ability);
+});
