@@ -1,3 +1,5 @@
+
+//------------- Creates Pokemon List------------//
 let pokemonRepository = (function ()
 {
     let pokemonList = [
@@ -46,7 +48,7 @@ let pokemonRepository = (function ()
     function add (pokemon){
       return pokemonList.push(pokemon);
     }
-
+//----- Adds button & list item to DOM -----//
     function addListItem(pokemon){
        let pokemonList= document.querySelector (".pokemon-list");
        let listItem= document.createElement ("li");
@@ -55,17 +57,24 @@ let pokemonRepository = (function ()
         button.classList.add ("button-class");
         listItem.appendChild(button);
         pokemonList.appendChild(listItem);
+        button.addEventListener ('click', function(){
+          showDetails(pokemon);
+        });
+     }
+
+     function showDetails(pokemon){
+       console.log(pokemon);
      }
 
     return {
      getAll : getAll,
      add : add,
-     addListItem : addListItem
+     addListItem : addListItem,
+     showDetails: showDetails
    };
 
-
 })();
-
+//------- Adds a pokemon to list ------//
 pokemonRepository.add(
   {
     name: " Nidoqueen",
@@ -74,7 +83,7 @@ pokemonRepository.add(
     ability: [" Poison Point", " Rivalry"]
   }
 );
-
+//---------------loop---------------//
 pokemonRepository.getAll().forEach (function(pokemon)
 {
   //prints the details of each Pokemon to the DOM and add line breaks
