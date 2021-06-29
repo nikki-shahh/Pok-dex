@@ -71,33 +71,14 @@ let pokemonRepository = (function ()
      function showDetails(pokemon){
        console.log(pokemon);
      }
-//-----adds img ---------//
-     function addImage(pokemon){
-       let img = document.createElement("img");
-       let src = document.getElementById("pokemon-image");
-       img.src=pokemon.imageFile;
-       src.appendChild(img);
-     }
-//-----------------------//
     return {
      getAll : getAll,
      add : add,
      addListItem : addListItem,
      showDetails: showDetails,
-     addImage: addImage
    };
 
 })();
-//------- Adds a pokemon to list ------//
-pokemonRepository.add(
-  {
-    name: " Nidoqueen",
-    height: 1.3,
-    type: [" Ground"," Poison"],
-    ability: [" Poison Point", " Rivalry"],
-    imageFile: "img/Nidoqueen.svg"
-  }
-);
 
 //---------------loop---------------//
 pokemonRepository.getAll().forEach (function(pokemon)
@@ -105,5 +86,4 @@ pokemonRepository.getAll().forEach (function(pokemon)
   //prints the details of each Pokemon to the DOM and add line breaks
 // document.write ("<p> Name: " + pokemon.name + " - Height: " + pokemon.height + " - Type: " + pokemon.type + " - Ability: " + pokemon.ability);
   pokemonRepository.addListItem(pokemon);
-  pokemonRepository.addImage(pokemon);
 });

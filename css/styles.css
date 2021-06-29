@@ -50,10 +50,3 @@ div {
   color: black;
   border: 2px solid orange;
 }
-/*------------img------------*/
-#pokemon-image img {
-  position: relative;
-  width: 250px;
-  margin-right: 40px;
-  border-radius: 90%;
-}
