@@ -121,3 +121,36 @@ ul{
 .pokemon-picture {
   width: 40%;
 }
+
+/*------- mobiles/tablets ------*/
+
+@media all and (max-width: 360px) {
+  .modal {
+    margin: 5px;
+    font-size: 12px;
+    font-weight: 80;
+    width: 70%;
+    max-width: 300px;
+    box-shadow: 0 0 0 .5em #48AAAD,
+                0 0 0 1em #FFF83F;
+  }
+
+  .pokemon-picture {
+    width: auto;
+  }
+  .modal h1 {
+    font-weight: 100;
+  }
+}
+
+@media all and (min-width: 360px) and (max-width: 540px) {
+  .modal {
+    margin: 7px;
+    font-size: 14px;
+    font-weight: 80;
+    width: 80%;
+    max-width: 480px;
+    box-shadow: 0 0 0 .5em #48AAAD,
+                0 0 0 1em #FFF83F;
+  }
+}
