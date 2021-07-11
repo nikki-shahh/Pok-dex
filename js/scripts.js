@@ -4,6 +4,7 @@ let pokemonRepository = (function (){
     let pokemonList=[];
     let apiUrl= 'https://pokeapi.co/api/v2/pokemon/';
     let modalContainer= document.querySelector ("#modal-container")
+    let searchByName = document.querySelector("#search");
     function getAll (){
       return pokemonList;
     }
@@ -127,6 +128,20 @@ function loadDetails(item){
         hideModal();
       }
     });
+//--------------------searchByName-----------------//
+
+searchByName.addEventListener('input', function(){
+   let pokemonList = document.querySelectorAll('li');
+   let value = searchByName.value.toUpperCase();
+
+   pokemonList.forEach(function(pokemon){
+       if(pokemon.innerText.toUpperCase().indexOf(value) > -1){
+           pokemon.style.display = '';
+       }else{
+           pokemon.style.display = 'none';
+       }
+   })
+ });
 //----------------show details----------//
 function showDetails(pokemon){
   pokemonRepository.loadDetails(pokemon).then (function(){
