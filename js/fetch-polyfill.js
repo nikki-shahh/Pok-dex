@@ -23,7 +23,7 @@
   };
 
   function isDataView(obj) {
-    return obj && DataView.prototype.isPrototypeOf(obj)
+    return obj && DataView.prototype.isPrototypeOf.call(obj)
   }
 
   if (support.arrayBuffer) {
@@ -116,7 +116,7 @@
   };
 
   Headers.prototype.has = function(name) {
-    return this.map.hasOwnProperty(normalizeName(name))
+    return this.map.hasOwnProperty.call(normalizeName(name))
   };
 
   Headers.prototype.set = function(name, value) {
@@ -125,7 +125,7 @@
 
   Headers.prototype.forEach = function(callback, thisArg) {
     for (var name in this.map) {
-      if (this.map.hasOwnProperty(name)) {
+      if (this.map.hasOwnProperty.call(name)) {
         callback.call(thisArg, this.map[name], name, this);
       }
     }
@@ -220,17 +220,17 @@
         this._bodyText = '';
       } else if (typeof body === 'string') {
         this._bodyText = body;
-      } else if (support.blob && Blob.prototype.isPrototypeOf(body)) {
+      } else if (support.blob && Blob.prototype.isPrototypeOf.call(body)) {
         this._bodyBlob = body;
-      } else if (support.formData && FormData.prototype.isPrototypeOf(body)) {
+      } else if (support.formData && FormData.prototype.isPrototypeOf.call(body)) {
         this._bodyFormData = body;
-      } else if (support.searchParams && URLSearchParams.prototype.isPrototypeOf(body)) {
+      } else if (support.searchParams && URLSearchParams.prototype.isPrototypeOf.call(body)) {
         this._bodyText = body.toString();
       } else if (support.arrayBuffer && support.blob && isDataView(body)) {
         this._bodyArrayBuffer = bufferClone(body.buffer);
         // IE 10-11 can't handle a DataView body.
         this._bodyInit = new Blob([this._bodyArrayBuffer]);
-      } else if (support.arrayBuffer && (ArrayBuffer.prototype.isPrototypeOf(body) || isArrayBufferView(body))) {
+      } else if (support.arrayBuffer && (ArrayBuffer.prototype.isPrototypeOf.call(body) || isArrayBufferView(body))) {
         this._bodyArrayBuffer = bufferClone(body);
       } else {
         this._bodyText = body = Object.prototype.toString.call(body);
@@ -241,7 +241,7 @@
           this.headers.set('content-type', 'text/plain;charset=UTF-8');
         } else if (this._bodyBlob && this._bodyBlob.type) {
           this.headers.set('content-type', this._bodyBlob.type);
-        } else if (support.searchParams && URLSearchParams.prototype.isPrototypeOf(body)) {
+        } else if (support.searchParams && URLSearchParams.prototype.isPrototypeOf.call(body)) {
           this.headers.set('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
         }
       }
